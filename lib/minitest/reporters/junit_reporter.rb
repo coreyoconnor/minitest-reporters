@@ -13,7 +13,7 @@ module MiniTest
       include Reporter
 
       def initialize(reports_dir = "test/reports")
-        @reports_path = File.join(Dir.getwd, reports_dir)
+        @reports_path = File.absolute_path(reports_dir)
         puts "Emptying #{@reports_path}"
         FileUtils.remove_dir(@reports_path) if File.exists?(@reports_path)
         FileUtils.mkdir_p(@reports_path)
